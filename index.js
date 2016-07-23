@@ -6,6 +6,10 @@ var bodyParser = require("body-parser");    // ??
 var mongoose = require("mongoose");         // mongoose model
 var methodOverride = require("method-override");
 var _ = require('lodash');
+var cron = require('node-cron');
+
+// my defined classes
+var animeFunctions = require('./classes/anime.js');
 
 var app = express();
 
@@ -38,6 +42,28 @@ mongoose.connection.once('open', function() {
 
     console.log("Thare be dragons on port 3000");
     app.listen(3000);
+
+/*
+    var task = cron.schedule('* * * * *', function() {
+        console.log('will execute every minute until stopped');
+    });*/
+    //animeFunctions.fetchAnimeTitles();
+
+
+    var animeFunctions = require('./classes/anime.js');
+    
+
+
+    var anime = require("./models/anime.model.js");
+    animeFunctions.fetchAnimeByField(anime, 'title');
+
+    var rawr = anime({
+        title: 'rawrness added',
+        href: 'www.gooe.com',
+        medium: 'nwanime' 
+    });
+
+
 });
 
 
