@@ -21,8 +21,11 @@ app.use(function(req, res, next) {
 });
 
 // Connect to mongoDB
-mongoose.connect('mongodb://localhost/anime');
-mongoose.connection.once('open', function() {
+// Do I need a table that stored just anime titles ??
+var db = mongoose.connect('mongodb://localhost/anime');
+mongoose.connection.once('open', function(db) {
+
+    //var newStuff = db.collection("animeList");
 
     // Load models
     app.models = require('./models/index');
@@ -50,7 +53,7 @@ mongoose.connection.once('open', function() {
     app.classes.anime.fetchAll(app.models.anime);
 
     // Run scrape job!
-    app.scrappers.nwAnime.scrape();
+    app.scrappers.nwAnime.scrape(app.models.anime, app.models.animeEpisode);
 });
 
 exports = module.exports = app;

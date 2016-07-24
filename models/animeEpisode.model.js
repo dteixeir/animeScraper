@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 // Anime Schema
-var animeSchema = new mongoose.Schema({
+var animeEpisodeSchema = new mongoose.Schema({
     title: String,
     href: String,
     episodeNumber: String,
@@ -9,7 +9,7 @@ var animeSchema = new mongoose.Schema({
 });
 
 // Creates the Schema object!
-var Anime = mongoose.model('anime', animeSchema, 'animes');
+var AnimeEpisode = mongoose.model('animeEpisode', animeEpisodeSchema, 'animeEpisodes');
 
 // Export the model schema
-module.exports = Anime;
+module.exports = AnimeEpisode;
