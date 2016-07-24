@@ -12,7 +12,6 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
     // structure of request call
     // first param = url, 
     // callback takes 3 params (error, response status code, html)
-
     request(url, function(error, response, html) {
         if(!error) {
             var $ = cheerio.load(html);
@@ -30,23 +29,32 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
                 // Split it to get title and episode num seperate
                 showData.title = showData.title.split(' Episode ', 2);
                 
-                // Grab hyper link
-                //showData.href = data.attr('href');
-                //console.log(showData);
+                // If title is in animeList collection update??
+                if(showData.title) {
+                    if(anime.find({ title: [showData.title[0].toString().trim()] })) {
+                        //console.log("the title is - " + showData.title);
 
-                var stuff = anime({
-                    title: showData.title[0].toString().trim(),
-                    href: data.attr('href'),
-                    episodeNumber: parseInt(showData.title[1]),
-                    medium: 'nwAnime.com'
-                });           
+                        var show = animeEpisode({
+                            title: showData.title[0].toString().trim(),
+                            href: data.attr('href'),
+                            episodeNumber: parseInt(showData.title[1]),
+                            medium: 'nwAnime.com'
+                        });
 
-                // If the anime title appears in ?WatchList DB table?  fetch from ?EpisodeList DB Table?
-                var stuff = new anime(stuff);
-                stuff.save();
 
-                // update each episode!
-                var stuff2 = new animeEpisode(stuff).save();
+                        anime.find( { title: [show.title] } ).then(function(data) {
+                            if (data.length > 0){
+                                //show.update();
+                                show.save();
+                            }                       
+                        });
+
+
+                        // If the anime title appears in ?WatchList DB table?  fetch from ?EpisodeList DB Table?
+                        //var show = new animeEpisode(show);
+                        //show.save();
+                    }
+                }
             });
         }
     });
