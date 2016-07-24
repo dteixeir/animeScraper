@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
 // Anime Schema
-var animeSchema = new Schema({
+var animeSchema = new mongoose.Schema({
     title: String,
     href: String,
     medium: String

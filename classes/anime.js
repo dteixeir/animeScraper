@@ -1,4 +1,3 @@
-//var anime = require("../models/anime.model.js");
 var AnimeFunctions = function () {};
 
 AnimeFunctions.prototype.fetchAnimeByField = function (anime, field) {
@@ -11,13 +10,22 @@ AnimeFunctions.prototype.fetchAnimeByField = function (anime, field) {
     });
 };
 
-// Find and update episode number
-function animeUpdateEpisodeNumber () {
-    anime.findOneAndUpdate({title:'rawrness'}, {title:'rawrness added'}, function(err, anime) {
+// More of a universal plugin to search for something in a column and replace it!
+AnimeFunctions.prototype.animeUpdateEpisodeNumber = function(collectionType, newValue, oldValue, KeyName) {
+    collectionType.findOneAndUpdate({ [KeyName]: newValue }, { [KeyName]: oldValue }, function(err, collectionType) {
         if (err) throw err;
-
-            console.log(anime);
             console.log('rawr saved successfully???');
+    });
+};
+
+// Fetchs all anime in the db
+AnimeFunctions.prototype.fetchAll = function(collectionType) {
+    collectionType.find({}).exec(function(err, collectionType) {
+        if(err) {
+            res.send('oops....');
+        } else {
+            // console.log(collectionType);
+        }
     });
 };
 
