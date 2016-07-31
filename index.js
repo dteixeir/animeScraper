@@ -33,8 +33,8 @@ mongoose.connection.once('open', function(db) {
     // Load classes
     app.classes = require('./classes/index');
 
-    // Load Scrappers
-    app.scrappers = require('./scrappers/index');
+    // Load Scrapers
+    app.scrapers = require('./scrapers/index');
 
     // Load Routes
     var routes = require('./routes');
@@ -48,12 +48,19 @@ mongoose.connection.once('open', function(db) {
     app.listen(3000);
 
     var anime = app.models.anime;
-    app.classes.anime.fetchAnimeByField(app.models.anime, 'title');
-    app.classes.anime.animeUpdateEpisodeNumber(anime, 'rawrness added', 'newValue', 'title');
-    app.classes.anime.fetchAll(app.models.anime);
+    var animeFunctions = app.classes.animeFunctions;
+
+    //app.classes.animes.getAnimeByField(app.models.anime, 'title');
+    //app.classes.animes.animeUpdateEpisodeNumber(anime, 'rawrness added', 'newValue', 'title');
+    app.classes.animeEpisodes.getAllAnimeEpisodes("Naruto Shippuden");
+    //app.classes.animes.getAll(app.models.anime);
+
+    app.classes.animes.getAnimeByTitle("Naruto Shippuden");
+    
+
 
     // Run scrape job!
-    app.scrappers.nwAnime.scrape(app.models.anime, app.models.animeEpisode);
+    app.scrapers.nwAnime.scrape(app.models.anime, app.models.animeEpisode);
 });
 
 exports = module.exports = app;

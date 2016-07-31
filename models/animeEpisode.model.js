@@ -1,15 +1,19 @@
 var mongoose = require('mongoose');
 
-// Anime Schema
+// AnimeEpisode Schema
 var animeEpisodeSchema = new mongoose.Schema({
-    title: String,
-    href: String,
-    episodeNumber: String,
-    medium: String
+    Title: String,
+    Href: String,
+    EpisodeNumber: Number,  
+    WebsiteUrl: String,     // Website episode was found at FIRST
+    Watched: Boolean,       // Watched or not
+    New: Boolean,           // Recently updated (define recently?)
+    FoundDate: Date         // Date episode was found
 });
 
 // Creates the Schema object!
 var AnimeEpisode = mongoose.model('animeEpisode', animeEpisodeSchema, 'animeEpisodes');
+
 
 // Export the model schema
 module.exports = AnimeEpisode;

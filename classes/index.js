@@ -1,5 +1,6 @@
 module.exports = {
-    anime: require('./anime.js'),
+    animes: require('./animes.js'),
+    animeEpisodes: require('./animeEpisodes.js'),
     cron: require('./cron.js')
 };
 

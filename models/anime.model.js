@@ -2,8 +2,11 @@ var mongoose = require('mongoose');
 
 // Anime Schema
 var animeSchema = new mongoose.Schema({
-    title: String,
-    medium: String
+    Title: String,
+    WebsiteUrl: String,     // Website Anime was found at FIRST!
+    New: Boolean,           // Recently started (define recently)
+    Following: Boolean,     // Following this anime or not
+    FoundDate: Date         // Date Anime was added
 });
 
 // Creates the Schema object!
