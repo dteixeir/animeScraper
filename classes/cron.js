@@ -11,6 +11,7 @@ cron.schedule('* * * * *', function() {
 });
 
 // Should run new update every day @ 00:00
+// WORKS!!!! Tested (Aug 1)
 cron.schedule('0 0 * * *', function() {
     console.log('Update New Fields');
     //update animes

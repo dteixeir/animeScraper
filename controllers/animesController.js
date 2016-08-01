@@ -8,14 +8,21 @@ module.exports = function(app, route) {
     ).methods(['get', 'put', 'post']);
 
     // Alternate Detail Route Setup
-    // route = anime/:id/episodes
-    app.models.anime.route('episodes', {
-        detail: true,
+    // route = animes/:title
+    app.models.anime.route(':title', {
+        detail: false,
         handler: function(req, res, next) {
-            app.models.anime.findById(req.params.id, function(err, data) {
-                app.models.animeEpisode.find({Title: data.Title}, function(err, data) {
-                    res.send(data);
-                });
+            app.models.animeEpisode.find({Title: req.params.title}, function(err, data) {
+                res.send(data);
+            });
+        }
+    });
+
+    app.models.anime.route('following', {
+        detail: false,
+        handler: function(req, res, next) {
+            app.models.anime.find({ Following: true }, function(err, data) {
+                res.send(data);
             });
         }
     });
