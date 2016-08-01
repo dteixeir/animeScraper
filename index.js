@@ -7,6 +7,7 @@ var _ = require('lodash');
 
 // my defined classes
 var app = express();
+var router = express.Router();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -49,15 +50,6 @@ mongoose.connection.once('open', function(db) {
 
     var anime = app.models.anime;
     var animeFunctions = app.classes.animeFunctions;
-
-    //app.classes.animes.getAnimeByField(app.models.anime, 'title');
-    //app.classes.animes.animeUpdateEpisodeNumber(anime, 'rawrness added', 'newValue', 'title');
-    app.classes.animeEpisodes.getAllAnimeEpisodes("Naruto Shippuden");
-    //app.classes.animes.getAll(app.models.anime);
-
-    app.classes.animes.getAnimeByTitle("Naruto Shippuden");
-    
-
 
     // Run scrape job!
     app.scrapers.nwAnime.scrape(app.models.anime, app.models.animeEpisode);

@@ -9,6 +9,8 @@ var animeSchema = new mongoose.Schema({
     FoundDate: Date         // Date Anime was added
 });
 
+animeSchema.index({ Title: 1}, { unique: true });
+
 // Creates the Schema object!
 var Anime = mongoose.model('anime', animeSchema, 'animes');
 

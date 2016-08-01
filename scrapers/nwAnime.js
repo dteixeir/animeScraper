@@ -39,7 +39,7 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
                             FoundDate: Date.now(),
                             Following: false,
                         };
- 
+
                         // SHOULD BE ABLE TO ABSTRACT THIS OUT FURTHER LATER
                         anime.find( { Title: show.Title } ).then(function(data) {
                             // Check if the anime exists in the Anime DB - If Not THEN Save
@@ -55,7 +55,8 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
                         });
 
                         // SHOULD BE ABLE TO ABSTRACT THIS OUT FURTHER LATER
-                        animeEpisode.find({ Title: show.Title, EpisodeNumber: show.EpisodeNumber }).then(function(data, err) {
+                        var query = animeEpisode.find({ Title: show.Title, EpisodeNumber: show.EpisodeNumber }).exec();
+                        query.then(function(data, err) {
                             // Check if the Episode Exists in the DB - If Not THEN Save
                             if (data.length == 0) {
                                 var newEpisode = new animeEpisode({
@@ -65,13 +66,43 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
                                     WebsiteUrl: show.Medium,
                                     Watched: false,
                                     New: true,
-                                    FoundDate: Date.now()
+                                    FoundDate: Date.now(),
+                                    EmbedUrl: ""
                                 }).save();
                             }
                         });
 
                     }
                 }
+            });
+        }
+    });
+
+
+    // Set up to hit all of the host Urls and fetch embedUrl
+    var query = animeEpisode.find({ EmbedUrl: "" }).exec();
+    query.then( function(data) {
+
+        for(var i = 0; i < data.length-1; i++) {
+
+            var query = animeEpisode.findById( data[i].id).exec();
+            query.then(function (result) {
+
+                // Request to get html
+                request(result.Href, function(error, response, html) {
+
+                    if(!error) {
+                        var $ = cheerio.load(html);
+
+                        // select the attribute from the DOM
+                        $('#embed_holder iframe').filter(function() {
+                            var pageData = $(this);
+
+                            result.EmbedUrl = pageData.attr('src');
+                            result.save();
+                        });
+                    }
+                });
             });
         }
     });

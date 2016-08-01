@@ -1,3 +1,4 @@
 module.exports = {
-    '/anime' : require('./controllers/animeController')
+    '/animes' : require('./controllers/animesController'),
+    '/episodes' : require('./controllers/animeEpisodeController')
 };

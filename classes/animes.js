@@ -41,7 +41,6 @@ AnimeFunctions.prototype.getAnimeByTitle = function (title) {
     });
 }
 
-
 // Currently overkill
 // More of a universal plugin to search for something in a column and replace it!
 AnimeFunctions.prototype.animeUpdateEpisodeNumber = function(collectionType, newValue, oldValue, KeyName) {

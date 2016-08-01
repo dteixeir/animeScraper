@@ -4,9 +4,9 @@ module.exports = function(app, route) {
 
     // set up for REST
     var rest = restful.model(
-        'anime',
-        app.models.anime
-    ).methods(['get', 'put', 'post', 'delete']);
+        'animeEpisode',
+        app.models.animeEpisode
+    ).methods(['get', 'put', 'post']);
 
     // Register this endpoint with the app
     rest.register(app, route);
