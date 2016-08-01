@@ -1,7 +1,6 @@
 var restful = require('node-restful');
 
 module.exports = function(app, route) {
-
     // set up for REST
     var rest = restful.model(
         'animeEpisode',

@@ -1,13 +1,14 @@
 var restful = require('node-restful');
 
 module.exports = function(app, route) {
-
     // set up for REST
     var rest = restful.model(
         'anime',
         app.models.anime
     ).methods(['get', 'put', 'post']);
 
+    // Alternate Detail Route Setup
+    // route = anime/:id/episodes
     app.models.anime.route('episodes', {
         detail: true,
         handler: function(req, res, next) {

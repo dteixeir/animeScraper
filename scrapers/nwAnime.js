@@ -4,8 +4,6 @@ var cheerio = require("cheerio");
 var animeFunctions = require("../classes/animes.js");
 
 nwAnime.prototype.scrape = function (anime, animeEpisode) {
-    // grab list of anime titles and cross reference?
-
     // web scraping magic!
     url = 'http://www.nwanime.com/';
 
@@ -71,13 +69,11 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
                                 }).save();
                             }
                         });
-
                     }
                 }
             });
         }
     });
-
 
     // Set up to hit all of the host Urls and fetch embedUrl
     var query = animeEpisode.find({ EmbedUrl: "" }).exec();
@@ -106,7 +102,6 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
             });
         }
     });
-
 };
 
 module.exports = new nwAnime();

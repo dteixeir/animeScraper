@@ -9,6 +9,7 @@ var animeSchema = new mongoose.Schema({
     FoundDate: Date         // Date Anime was added
 });
 
+// Alternate Key setup
 animeSchema.index({ Title: 1}, { unique: true });
 
 // Creates the Schema object!

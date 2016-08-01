@@ -12,11 +12,11 @@ var animeEpisodeSchema = new mongoose.Schema({
     EmbedUrl: String        // String to show the video player locally (Probably needs to be filled in on update?)
 });
 
+// Alternate Key setup
 animeEpisodeSchema.index({ Title: 1, EpisodeNumber: 1}, { unique: true });
 
 // Creates the Schema object!
 var AnimeEpisode = mongoose.model('animeEpisode', animeEpisodeSchema, 'animeEpisodes');
-
 
 // Export the model schema
 module.exports = AnimeEpisode;

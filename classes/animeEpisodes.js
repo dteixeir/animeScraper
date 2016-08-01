@@ -1,4 +1,5 @@
 var AnimeEpisodeFunctions = function () {};
+// DONT THINK I WILL NEED THIS!!!! GOOD!!!!!!
 
 /*  Function I NEED
 PRIORITY!

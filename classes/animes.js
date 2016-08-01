@@ -1,5 +1,5 @@
 var AnimeFunctions = function () {};
-
+// DONT THINK I WILL NEED THIS!!!!!!!!!!!!
 /*  Function I NEED
 PRIORITY!
 3- update   -   (Done? - Mongoose?) update anime follow status
