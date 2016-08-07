@@ -20,6 +20,7 @@ module.exports = function(app, route) {
     // Grabs all episodes for an anime
     app.get("/animes/:title", function(req, res, next) {
         app.models.animeEpisode.find({Title: req.params.title}, function(err, data) {
+            console.log(data);
             res.send(data);
         });
     });
