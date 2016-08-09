@@ -2,6 +2,7 @@
   "name": "client",
   "private": true,
   "devDependencies": {
+    "angular-resource": "^1.5.8",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "2.3.1",
     "gulp-cache": "^0.2.10",

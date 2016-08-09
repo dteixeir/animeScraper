@@ -30,8 +30,8 @@ var paths = {
   ],
   karma: 'karma.conf.js',
   views: {
-    main: yeoman.app + '/views/index.html',
-    files: [yeoman.app + '/views/**/*.html']
+    main: yeoman.app + '/index.html',
+    files: [yeoman.app + '/**/*.html']
   }
 };
 
@@ -144,7 +144,7 @@ gulp.task('bower', function () {
       directory: yeoman.app + '/bower_components',
       ignorePath: '..'
     }))
-  .pipe(gulp.dest(yeoman.app + '/views'));
+  .pipe(gulp.dest(yeoman.app));
 });
 
 ///////////

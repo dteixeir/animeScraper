@@ -38,7 +38,7 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li><a ng-href="#/animes">Animes</a></li>
+              <li><a ng-href="#/movies">Movies</a></li>
             </ul>
           </div>
         </div>
@@ -46,7 +46,7 @@
     </div>
 
     <div class="container">
-    <div ng-view=""></div>
+    <div ng-view></div>
     </div>
 
     <div class="footer">
@@ -73,18 +73,41 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/lodash/dist/lodash.min.js"></script>
-    <script src="bower_components/restangular/dist/restangular.min.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/animes.js"></script>
-        <script src="scripts/controllers/movie-add.js"></script>
-        <script src="scripts/controllers/anime-view.js"></script>
-        <script src="scripts/controllers/animeEpisodes.js"></script>
-        <script src="scripts/controllers/movie-edit.js"></script>
-        <!-- endbuild -->
+    <!-- show links -->
+    <script src="component/component.module.js"></script>
+    <script src="component/show/show.module.js"></script>
+    <script src="component/show/animes.js"></script>
+
+    <!-- api links -->
+    <script src="api/api.module.js"></script>
+    <script src="api/animes/animes.module.js"></script>
+    <script src="api/animes/animes.factory.js"></script>
+
+    <!-- episodeList links --> 
+    <script src="component/episodeList/episodeList.module.js"></script>
+    <script src="component/episodeList/animeEpisodes.js"></script>
+
+    <!-- episode links --> 
+    <script src="component/episode/episode.module.js"></script>
+    <script src="component/episode/anime-view.js"></script>
+
+    <!-- directive -->
+    <script src="directive/directive.module.js"></script>
+    <script src="directive/youtube/youtube.directive.js"></script>
+
+    <!-- fitler --> 
+    <script src="filter/filter.module.js"></script>
+    <script src="filter/trusted.filter.js"></script>
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="app.module.js"></script>
+    <script src="route.js"></script>
+
+    <!-- endbuild -->
 </body>
 </html>
