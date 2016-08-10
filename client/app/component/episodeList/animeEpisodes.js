@@ -8,12 +8,40 @@
  * Controller of the clientApp
  */
 angular.module('clientApp.component.episodeList')
-  .controller('AnimeEpisodesCtrl', function ($routeParams, animesFactory) {
+  .controller('AnimeEpisodesCtrl', function ($window, $routeParams, animesFactory) {
     var vm = this;
+    vm.episodeDesc = true;
+
     vm.title = $routeParams.title;
+    vm.toggleWatched = toggleWatched;
+    vm.setWatchedEpisode = setWatchedEpisode;
+    vm.print = print;
 
+    vm.toggleEpisodeOrder = toggleEpisodeOrder;
 
-    animesFactory.getEpisodes(vm.title).success(function(data) {
-      vm.episodes = data;
-    });
+    getEpisodes();
+
+    function print() {
+      console.log('rawr!!!!');
+    }
+
+    function toggleEpisodeOrder() {
+      vm.episodeDesc = !vm.episodeDesc;
+    }
+
+    function setWatchedEpisode(id) {
+      animesFactory.setWatchedEpisode(id, true).$promise;
+    }
+
+    function toggleWatched(id) {
+      animesFactory.toggleWatchedEpisode(id).then(function success() {
+        getEpisodes();
+      });
+    }
+
+    function getEpisodes() {
+      animesFactory.getEpisodes(vm.title).success(function(data) {
+        vm.episodes = data;
+      });
+    }
   });

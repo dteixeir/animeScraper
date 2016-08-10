@@ -9,22 +9,25 @@
  */
 angular.module('clientApp.component.show')
   .controller('AnimesCtrl', function (animesFactory) {
+    
+    // variables
     var vm = this;
-    vm.print = print;
 
-    animesFactory.getAnimes().success(function(data) {
-      vm.animes = data;
-    });
+    // function routing
+    vm.toggleFollow = toggleFollow;
 
-    function print() {  
-      
-      console.log('hi');
+    getAnimes();
+
+    function toggleFollow(title) {
+      animesFactory.updateFollowing(title).then(function success() {
+        getAnimes();
+      });
     }
 
-    
-
     function getAnimes() {
-      return Animes.getAnimes().$promise;
+      animesFactory.getAnimes().success(function(data) {
+        vm.animes = data;
+      });
     }
 
   });

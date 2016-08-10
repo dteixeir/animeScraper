@@ -85,16 +85,12 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
 
                 // Request to get html
                 request(result.Href, function(error, response, html) {
-
-                    console.log('looking for some!');
                     if(!error) {
                         var $ = cheerio.load(html);
 
                         // select the attribute from the DOM
                         $('#embed_holder iframe').filter(function() {
                             var pageData = $(this);
-
-                            console.log('found some!');
                             result.EmbedUrl = pageData.attr('src');
                             result.save();
                         });

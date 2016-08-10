@@ -16,12 +16,22 @@
       return $http.get(API + title + '/' + id);
     }
 
+    factory.updateFollowing = function(title) {
+      return $http.put(API + 'following/' + title);
+    }
+
+    factory.toggleWatchedEpisode = function(id) {
+      return $http.put('http://localhost:3000/episode/watched/' + id)
+    }
+
+    factory.setWatchedEpisode = function(id, boolVal) {
+      return $http.put('http://localhost:3000/episode/watched/' + id + '/' + boolVal)
+    }
+
     return factory;
   };
 
   animesFactory.$inject = ['$http'];
   angular.module('clientApp.api.animes').factory('animesFactory', animesFactory);
-
-  
 
 }());
