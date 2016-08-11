@@ -88,6 +88,8 @@ body {
   }
 
   .unseen {
-    opacity: .5;
+    &:hover {
+      color: lightgrey;
+    }
   }
 }

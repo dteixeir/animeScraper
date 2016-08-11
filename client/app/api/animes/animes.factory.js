@@ -21,11 +21,15 @@
     }
 
     factory.toggleWatchedEpisode = function(id) {
-      return $http.put('http://localhost:3000/episode/watched/' + id)
+      return $http.put('http://localhost:3000/episode/watched/' + id);
     }
 
     factory.setWatchedEpisode = function(id, boolVal) {
-      return $http.put('http://localhost:3000/episode/watched/' + id + '/' + boolVal)
+      return $http.put('http://localhost:3000/episode/watched/' + id + '/' + boolVal);
+    }
+
+    factory.getUnseenEpisodeCount = function(title) {
+      return $http.get('http://localhost:3000/episode/unseen/' + title);
     }
 
     return factory;

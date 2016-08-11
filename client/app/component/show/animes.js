@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name clientApp.controller:MoviesCtrl
- * @description
- * # MoviesCtrl
- * Controller of the clientApp
- */
 angular.module('clientApp.component.show')
   .controller('AnimesCtrl', function (animesFactory) {
     
@@ -15,6 +8,7 @@ angular.module('clientApp.component.show')
 
     // function routing
     vm.toggleFollow = toggleFollow;
+    vm.getUnseenEpisodeCount = getUnseenEpisodeCount;
 
     getAnimes();
 
@@ -27,7 +21,20 @@ angular.module('clientApp.component.show')
     function getAnimes() {
       animesFactory.getAnimes().success(function(data) {
         vm.animes = data;
+        getUnseenEpisodeCount(vm.animes);
       });
+    }
+
+    function getUnseenEpisodeCount() {
+      for(var i in vm.animes) {
+        let k = i;
+        animesFactory.getUnseenEpisodeCount(vm.animes[k].Title)
+          .then( function successCallback(data) {
+            vm.animes[k]["UnseenCount"] = data.data.data;
+          }, function errorCallback(data) {
+            vm.animes[k]["UnseenCount"] = 0;
+          });
+      }
     }
 
   });
