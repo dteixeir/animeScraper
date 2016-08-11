@@ -1,6 +1,7 @@
 // cron cannot go less that 1 minute task run times.
 var cron = require('node-cron');
 var nwAnimeScraper = require('../scrapers/index.js').nwAnime;
+var app = require('../index.js');
 
 var schedualTasks = function(){};
 
