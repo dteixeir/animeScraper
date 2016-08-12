@@ -85,4 +85,7 @@ body {
   .unseen:hover {
     color: lightgrey;
   }
+  #episode-dropdown {
+    border-radius: 0 !important;
+  }
 }

@@ -8,7 +8,7 @@
  * Controller of the clientApp
  */
 angular.module('clientApp.component.episodeList')
-  .controller('AnimeEpisodesCtrl', function ($window, $routeParams, animesFactory) {
+  .controller('AnimeEpisodesCtrl', function ($routeParams, animesFactory) {
     var vm = this;
     vm.episodeDesc = true;
 

@@ -27,9 +27,9 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
                 showData.title = showData.title.split(' Episode ', 2);
 
                 if(showData.title) {
-                	if(anime.find({ Title: [showData.title[0].toString().trim()] })) {
+                	if(anime.find({ Title: cleanString([showData.title[0].toString().trim()]) })) {
                         var show = {
-                            Title: showData.title[0].toString().trim(),
+                            Title: cleanString(showData.title[0].toString().trim()),
                             WebsiteUrl: data.attr('href'),
                             EpisodeNumber: parseInt(showData.title[1]),
                             Medium: 'nwAnime.com',
@@ -100,5 +100,10 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
         }
     });
 };
+
+function cleanString(text) {
+    text = text.toString().replace(/\//gmi, " ");
+    return text;
+}
 
 module.exports = new nwAnime();
