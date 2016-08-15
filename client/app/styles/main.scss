@@ -1,5 +1,7 @@
 // bower:scss
 // endbower
+// for some reason this isen't being applied
+// FIGURE IT OUT!
 
 .browsehappy {
   margin: 0.2em 0;
@@ -95,5 +97,9 @@ body {
 
   #episode-dropdown {
     border-radius: 0 !important;
+  }
+
+  form {
+    margin-bottom: 10px;
   }
 }

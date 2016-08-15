@@ -20,6 +20,11 @@
         controller: 'AnimeViewCtrl',
         controllerAs: 'vm'
       })
+      .when('/authenticate/', {
+        templateUrl: '/component/authenticate/authenticate.html',
+        controller: 'AuthenticateCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({
         redirectTo: '/animes'
       });

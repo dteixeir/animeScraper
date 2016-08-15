@@ -6,7 +6,6 @@ module.exports = function(app, route) {
     // pre route middleware to run
     app.use('/animes', mw.auth);
 
-
     // Grabs all anime
     app.get("/animes", function(req, res, next) {
         app.models.anime.find({}, function(err, data) {

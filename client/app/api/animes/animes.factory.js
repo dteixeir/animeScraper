@@ -1,41 +1,36 @@
 (function() {
-  
-  var animesFactory = function($http) {
-    var factory = {};
-    var API = 'http://localhost:3000/animes/';
+  angular.module('clientApp.api.animes')
 
-    factory.getAnimes = function() {
-      return $http.get(API);
-    };
+  .factory('animesFactory', function($http, API) {
+        return {
+            getAnimes : function() {
+                return $http.get(API.ANIMES);
+            }, 
 
-    factory.getEpisodes = function(title) {
-      return $http.get(API + title);
-    };
+            getEpisodes(title) {
+              return $http.get(API.ANIMES + title);
+            },
 
-    factory.getEpisode = function(title, id) {
-      return $http.get(API + title + '/' + id);
-    }
+            getEpisode(title, id) {
+              return $http.get(API.ANIMES + title + '/' + id);
+            },
 
-    factory.updateFollowing = function(title) {
-      return $http.put(API + 'following/' + title);
-    }
+            updateFollowing(title) {
+              return $http.put(API.ANIMES + 'following/' + title);
+            },
 
-    factory.toggleWatchedEpisode = function(id) {
-      return $http.put('http://localhost:3000/episode/watched/' + id);
-    }
+            toggleWatchedEpisode(id) {
+              return $http.put(API.EPISODES + 'watched/' + id);
+            },
 
-    factory.setWatchedEpisode = function(id, boolVal) {
-      return $http.put('http://localhost:3000/episode/watched/' + id + '/' + boolVal);
-    }
+            setWatchedEpisode(id, boolVal) {
+              return $http.put(API.EPISODES + '/watched/' + id + '/' + boolVal);
+            },
 
-    factory.getUnseenEpisodeCount = function(title) {
-      return $http.get('http://localhost:3000/episode/unseen/' + title);
-    }
-
-    return factory;
-  };
-
-  animesFactory.$inject = ['$http'];
-  angular.module('clientApp.api.animes').factory('animesFactory', animesFactory);
+            getUnseenEpisodeCount(title) {
+              return $http.get(API.EPISODES + '/unseen/' + title);
+            }
+        }
+    });
 
 }());
