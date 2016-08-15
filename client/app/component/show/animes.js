@@ -5,6 +5,9 @@ angular.module('clientApp.component.show')
     
     // variables
     var vm = this;
+    // was planning on using moment here for something? newer anime maybe?
+
+    vm.filter = {Following:true};
 
     // function routing
     vm.toggleFollow = toggleFollow;

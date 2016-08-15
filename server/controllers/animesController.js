@@ -1,8 +1,12 @@
 var express = require('express');
 var ObjectId = require('mongodb').ObjectID;
+var mw = require('../classes/middleware.js');
 
 module.exports = function(app, route) {
- 
+    // pre route middleware to run
+    app.use('/animes', mw.auth);
+
+
     // Grabs all anime
     app.get("/animes", function(req, res, next) {
         app.models.anime.find({}, function(err, data) {
@@ -56,6 +60,7 @@ module.exports = function(app, route) {
 
     // Return middleware ?? per use case stuff?
     return function(req, res, next) {
+        
         next();
     };
 };

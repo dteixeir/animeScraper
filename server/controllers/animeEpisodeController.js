@@ -1,7 +1,10 @@
 var express = require('express');
 var ObjectId = require('mongodb').ObjectID;
+var mw = require('../classes/middleware.js');
 
 module.exports = function(app, route) {
+    // pre route middleware to run
+    app.use('/episode', mw.auth);
 
     // toggles if the episode has been seen
     app.put("/episode/watched/:id", function(req, res, next) {
