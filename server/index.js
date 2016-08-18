@@ -8,6 +8,7 @@ var mongoose =       require("mongoose");           // mongoose model
 var ObjectId =       require('mongodb').ObjectID;
 var morgan =         require('morgan');
 var request =        require("request");            // ??
+var cors =           require('cors');               // NEED TO LEARN MORE!!!
 
 // local files
 var config = require('./config.js');
@@ -20,14 +21,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(morgan('dev'));
+app.use(cors());
 
+/*
 // CORS Support
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, token');
     next();
-});
+});*/
 
 // Connect to mongoDB
 var db = mongoose.connect(config.db);

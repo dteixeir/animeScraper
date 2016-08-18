@@ -24,11 +24,11 @@
             },
 
             setWatchedEpisode(id, boolVal) {
-              return $http.put(API.EPISODES + '/watched/' + id + '/' + boolVal);
+              return $http.put(API.EPISODES + 'watched/' + id + '/' + boolVal);
             },
 
             getUnseenEpisodeCount(title) {
-              return $http.get(API.EPISODES + '/unseen/' + title);
+              return $http.get(API.EPISODES + 'unseen/' + title);
             }
         }
     });

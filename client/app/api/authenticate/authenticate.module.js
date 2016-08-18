@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   
-  angular.module('clientApp.api.users', [
+  angular.module('clientApp.api.authenticate', [
     'ngResource'
   ]);
 })();

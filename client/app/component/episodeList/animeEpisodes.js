@@ -21,10 +21,6 @@ angular.module('clientApp.component.episodeList')
 
     getEpisodes();
 
-    function print() {
-      console.log('rawr!!!!');
-    }
-
     function toggleEpisodeOrder() {
       vm.episodeDesc = !vm.episodeDesc;
     }

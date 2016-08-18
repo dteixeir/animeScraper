@@ -3,7 +3,8 @@
 
   angular.module('clientApp')
 
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
+    $httpProvider.interceptors.push('auth');
     $routeProvider
       .when('/animes', {
         templateUrl: '/component/show/animes.html',
@@ -26,7 +27,7 @@
         controllerAs: 'vm'
       })
       .otherwise({
-        redirectTo: '/animes'
+        redirectTo: '/authenticate'
       });
   })
 

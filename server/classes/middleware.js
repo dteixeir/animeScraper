@@ -10,7 +10,6 @@ module.exports = {
         if(err) {
           res.status(400).send({message: 'Failed to authenticate token.'});
         } else {
-          console.log(decoded);
           req.decoded = decoded;
           next();
         }

@@ -7,6 +7,7 @@
     .constant("API", {
       "ANIMES": "http://localhost:" + port + "/animes/",
       "EPISODES": "http://localhost:" + port + "/episode/",
-      "USERS": "http://localhost:" + port + "/users/"
+      "USERS": "http://localhost:" + port + "/users/",
+      "AUTHENTICATE": "http://localhost:" + port + "/authenticate/",
     });
 })();
