@@ -2,9 +2,10 @@
   'use strict';
   
   angular.module('clientApp.component', [
-    'clientApp.component.show',
+    'clientApp.component.usersShows',
     'clientApp.component.episodeList',
     'clientApp.component.episode',
-    'clientApp.component.authenticate'
+    'clientApp.component.authenticate',
+    'clientApp.component.allShows'
   ]);
 })();

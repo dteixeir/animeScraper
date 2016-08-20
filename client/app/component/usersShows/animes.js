@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('clientApp.component.show')
+angular.module('clientApp.component.usersShows')
   .controller('AnimesCtrl', function (animesFactory) {
     
     // variables

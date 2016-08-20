@@ -7,8 +7,13 @@
     $httpProvider.interceptors.push('auth');
     $routeProvider
       .when('/animes', {
-        templateUrl: '/component/show/animes.html',
+        templateUrl: '/component/usersShows/animes.html',
         controller: 'AnimesCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/allanimes', {
+        templateUrl: '/component/allShows/allShows.html',
+        controller: 'AllShowsCtrl',
         controllerAs: 'vm'
       })
       .when('/animes/:title', {

@@ -4,6 +4,7 @@ var slackbot;
 var user;
 
 // create a bot
+// temporary fix until making it an app and using push notifications
 var bot = {
   message: function (username, message) {
 
