@@ -1,6 +1,7 @@
-var nwAnime = function () {};
-var request = require("request");
-var cheerio = require("cheerio");
+var nwAnime =  function () {};
+var request =  require("request");
+var cheerio =  require("cheerio");
+var slackbot = require('../classes/slackBot');
 
 nwAnime.prototype.scrape = function (anime, animeEpisode) {
     // web scraping magic!
@@ -66,6 +67,8 @@ nwAnime.prototype.scrape = function (anime, animeEpisode) {
                                     FoundDate: Date.now(),
                                     EmbedUrl: ""
                                 }).save();
+
+                                slackbot.message('Danny Teixeira', "New Episode: " + show.Title + " - " + show.EpisodeNumber);
                             }
                         });
                     }

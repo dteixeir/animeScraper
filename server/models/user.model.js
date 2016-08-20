@@ -3,7 +3,9 @@ var mongoose = require('mongoose');
 var userSchema = new mongoose.Schema({ 
     Username: String, 
     Password: String, 
-    Admin: Boolean 
+    SlackUsername: String,
+    SlackBotName: String,
+    Admin: Boolean
 });
 
 // Alternate Primary Key

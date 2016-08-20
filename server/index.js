@@ -9,6 +9,7 @@ var ObjectId =       require('mongodb').ObjectID;
 var morgan =         require('morgan');
 var request =        require("request");            // ??
 var cors =           require('cors');               // NEED TO LEARN MORE!!!
+var slackbot =       require('./classes/slackBot');
 
 // local files
 var config = require('./config.js');
@@ -53,7 +54,7 @@ mongoose.connection.once('open', function(db) {
 
     // Run scrape job!
     app.scrapers.nwAnime.scrape(app.models.anime, app.models.animeEpisode);
-
+    
 });
 
 exports = module.exports = app;
