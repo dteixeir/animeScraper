@@ -54,6 +54,7 @@ mongoose.connection.once('open', function(db) {
 
     // Run scrape job!
     app.scrapers.nwAnime.scrape(app.models.anime, app.models.animeEpisode);
+    //app.scrapers.thumbnailScraper.scrape(app);
     
 });
 
