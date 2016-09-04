@@ -15,7 +15,8 @@ module.exports = {
         }
       });
     } else {
-      res.status(403).send({message: 'No token provided.'});
+      res.status(403).send({error: 'No Token Provided'});
+      
     }
   }
 };  

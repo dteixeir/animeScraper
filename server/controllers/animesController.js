@@ -10,7 +10,7 @@ module.exports = function(app, route) {
     app.get("/animes", function(req, res, next) {
         app.models.anime.find({}, function(err, data) {
             if(err)
-                return err;
+                res.send({status: 404, data});
             res.send(data);
         });
     });
